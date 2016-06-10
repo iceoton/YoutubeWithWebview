@@ -7,9 +7,7 @@
     <WebView
         android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:background="#000000"
-        android:visibility="gone" />
+        android:layout_height="240dp"
+        android:background="#000000" />
 
 </LinearLayout>

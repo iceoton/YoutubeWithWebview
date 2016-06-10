@@ -31,7 +31,7 @@ public class MainFragment extends Fragment {
         videoView = (WebView) rootView.findViewById(R.id.video);
         videoView.setVisibility(View.VISIBLE);
         cWebVideoView = new CWebVideoView(getActivity(), videoView);
-        cWebVideoView.load("https://www.youtube.com/embed/cx20nTPZjes");
+        cWebVideoView.load("cx20nTPZjes");
 
         return rootView;
     }

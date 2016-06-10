@@ -26,7 +26,7 @@ public class CWebVideoView {
     public void load(String url) {
         this.url = url;
         String data = readFromfile(HTML_TEMPLATE, context);
-        data = data.replace("%1", url);
+        data = data.replace("[%video]", url);
         webview.loadData(data, "text/html", "UTF-8");
     }
 
