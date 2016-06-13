@@ -39,7 +39,6 @@ public class MainFragment extends Fragment {
         youtubeVideoController.load("rzPj9Yurcq0");
 
 
-
         youtubeVideoController.setYoutubeVideoListener(new YoutubeVideoListener() {
             @Override
             public void onUpdateTime(double time) {

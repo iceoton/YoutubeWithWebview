@@ -21,9 +21,9 @@ public class YoutubeVideoController {
         this.webview = webview;
         webview.setBackgroundColor(0);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.setWebViewClient(new WebViewClient(){
+        webview.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageFinished(WebView view, String url){
+            public void onPageFinished(WebView view, String url) {
 
             }
         });
@@ -42,7 +42,7 @@ public class YoutubeVideoController {
         }
     }
 
-    public void setYoutubeVideoListener(YoutubeVideoListener listener){
+    public void setYoutubeVideoListener(YoutubeVideoListener listener) {
         this.youtubeVideoListener = listener;
     }
 
@@ -52,8 +52,10 @@ public class YoutubeVideoController {
     }
 
     @JavascriptInterface
-    public void updateVideoTime(double time){
-        youtubeVideoListener.onUpdateTime(time);
+    public void updateVideoTime(double time) {
+        if (youtubeVideoListener != null) {
+            youtubeVideoListener.onUpdateTime(time);
+        }
     }
 
 }
