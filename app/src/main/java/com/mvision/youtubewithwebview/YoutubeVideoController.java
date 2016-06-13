@@ -1,5 +1,6 @@
 package com.mvision.youtubewithwebview;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -56,6 +57,15 @@ public class YoutubeVideoController {
         if (youtubeVideoListener != null) {
             youtubeVideoListener.onUpdateTime(time);
         }
+    }
+
+    @JavascriptInterface
+    public void onPlayerError(String message) {
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(mContext);
+        myDialog.setTitle("Video Error!");
+        myDialog.setMessage(message);
+        myDialog.setPositiveButton("OK", null);
+        myDialog.show();
     }
 
 }

@@ -112,6 +112,7 @@
                 error = true;
             }
             //window.location.href = 'ytplayer://onError?data=' + event.data;
+            AndroidFunction.onPlayerError(event.data);
         }
 
         window.onresize = function() {
@@ -129,6 +130,11 @@
                 vars[hash[0]] = hash[1];
             }
             return vars;
+        }
+
+        //Returns the duration in seconds of the currently playing video
+        function getDuration(){
+            return player.getDuration();
         }
 
     </script>
