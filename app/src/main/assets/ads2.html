@@ -62,13 +62,14 @@
                     "onError": "onPlayerError",
                     "onStateChange": "onStateChange"
                 },
-                "videoId": id,
+                "videoId": id + "?modestbranding=1",
                 "height": "100",
                 "playerVars": {
                     "rel": 0,
                     "showinfo": 0,
                     "autoplay": 0,
                     "modestbranding": 1,
+                    "disablekb": 1,
                     "playsinline": 1,
                     "controls": 0
                 }
@@ -82,7 +83,6 @@
                 if (state == YT.PlayerState.PLAYING) {
                     time = player.getCurrentTime()
                         //window.location.href = 'ytplayer://onPlayTime?data=' + time;
-                        AndroidFunction.updateVideoTime(time);
                 }
             }
 
@@ -97,7 +97,6 @@
         function onStateChange(event) {
             if (!error) {
                 //window.location.href = 'ytplayer://onStateChange?data=' + event.data;
-                AndroidFunction.showToast(event.data);
             } else {
                 error = false;
             }

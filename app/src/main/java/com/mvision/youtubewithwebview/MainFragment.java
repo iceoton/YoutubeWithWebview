@@ -7,13 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 /**
  * Created by iceoton on 6/10/2016 AD.
  */
 public class MainFragment extends Fragment {
     WebView videoView;
-    CWebVideoView cWebVideoView;
+    YoutubeVideoController youtubeVideoController;
+    TextView txtViedeoTime;
 
     public static MainFragment newInstance() {
 
@@ -29,9 +31,21 @@ public class MainFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         videoView = (WebView) rootView.findViewById(R.id.video);
+        txtViedeoTime = (TextView) rootView.findViewById(R.id.videoTime);
+
+
         videoView.setVisibility(View.VISIBLE);
-        cWebVideoView = new CWebVideoView(getActivity(), videoView);
-        cWebVideoView.load("cx20nTPZjes");
+        youtubeVideoController = new YoutubeVideoController(getActivity(), videoView);
+        youtubeVideoController.load("rzPj9Yurcq0");
+
+
+
+        youtubeVideoController.setYoutubeVideoListener(new YoutubeVideoListener() {
+            @Override
+            public void onUpdateTime(double time) {
+                txtViedeoTime.setText(String.valueOf(time));
+            }
+        });
 
         return rootView;
     }
