@@ -16,6 +16,7 @@ public class YoutubeVideoController {
     private String videoId;
     private WebView webview;
     YoutubeVideoListener youtubeVideoListener;
+    double currentTime = 0;
 
     public YoutubeVideoController(Context context, WebView webview) {
         this.mContext = context;
@@ -37,14 +38,38 @@ public class YoutubeVideoController {
         webview.loadUrl("file:///android_asset/ads.html?id=" + videoId);
     }
 
+    public void pause() {
+        webview.loadUrl("javascript:pauseVideo()");
+    }
+
+    public void play() {
+        webview.loadUrl("javascript:playVideo()");
+    }
+
+    public void seekTo(long timeSecond) {
+        webview.loadUrl("javascript:seekTo(" + timeSecond + ")");
+    }
+
+    public void seekToCurrent() {
+        webview.loadUrl("javascript:seekTo(" + (int)currentTime + ")");
+    }
+
     public void reload() {
         if (videoId != null) {
             load(videoId);
         }
     }
 
+    public void release() {
+        this.webview.destroy();
+    }
+
     public void setYoutubeVideoListener(YoutubeVideoListener listener) {
         this.youtubeVideoListener = listener;
+    }
+
+    public long getCurrentTimeMillis() {
+        return (long) currentTime;
     }
 
     @JavascriptInterface
@@ -55,6 +80,7 @@ public class YoutubeVideoController {
     @JavascriptInterface
     public void updateVideoTime(double time) {
         if (youtubeVideoListener != null) {
+            currentTime = time;
             youtubeVideoListener.onUpdateTime(time);
         }
     }

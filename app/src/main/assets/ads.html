@@ -137,7 +137,20 @@
             return player.getDuration();
         }
 
-    </script>
+        function playVideo(){
+            player.playVideo();
+        }
+
+        function pauseVideo(){
+            player.pauseVideo();
+        }
+
+        function seekTo(timeSecond){
+            player.seekTo(timeSecond, false);
+        }
+
+
+</script>
 </body>
 
 </html>
